@@ -1,0 +1,27 @@
+# C# / .NET
+[Oo]bj/
+[Bb]in/
+publish/
+*.exe
+*.dll
+*.pdb
+*.user
+*.userosscache
+*.sln.docstates
+
+# Android / Gradle / Java
+AndroidApp/.gradle/
+AndroidApp/build/
+AndroidApp/app/build/
+AndroidApp/local.properties
+.idea/
+*.iml
+
+# Logs / Data
+data/
+logs/
+*.log
+
+# Temp
+.DS_Store
+Thumbs.db
