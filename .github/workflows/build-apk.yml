@@ -21,14 +21,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Automatically accept all Android SDK licenses so the build doesn't freeze
       - name: Accept Android licenses
         run: yes | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
-      - name: Build Debug APK
+      - name: Generate Wrapper and Build APK
         run: |
           cd AndroidApp
-          chmod +x gradlew
+          gradle wrapper
           ./gradlew assembleDebug
 
       - name: Upload APK Artifact
@@ -37,7 +36,7 @@ jobs:
           name: AntigravityRemote-APK
           path: AndroidApp/app/build/outputs/apk/debug/app-debug.apk
 
-      - name: Create Release (on push to main)
+      - name: Create Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v1
         with:
