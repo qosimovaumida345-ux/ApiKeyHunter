@@ -24,10 +24,11 @@ jobs:
       - name: Accept Android licenses
         run: yes | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
-      - name: Generate Wrapper and Build APK
+      - name: Build Debug APK
         run: |
           cd AndroidApp
-          gradle wrapper
+          # Force use Gradle 8.4 which is compatible with AGP 8.2.0 avoiding Gradle 9 mutation issues
+          gradle wrapper --gradle-version 8.4
           ./gradlew assembleDebug
 
       - name: Upload APK Artifact
