@@ -288,11 +288,11 @@ class AntigravityWebSocketClient(
         val service = RemoteAccessibilityService.instance
         if (service != null) {
             when (key.uppercase()) {
-                "BACK" -> service.performGlobalAction(GLOBAL_ACTION_BACK)
-                "HOME" -> service.performGlobalAction(GLOBAL_ACTION_HOME)
-                "RECENTS" -> service.performGlobalAction(GLOBAL_ACTION_RECENTS)
-                "NOTIFICATIONS" -> service.performGlobalAction(GLOBAL_ACTION_NOTIFICATIONS)
-                "POWER" -> service.performGlobalAction(GLOBAL_ACTION_POWER_DIALOG)
+                "BACK" -> service.executeGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_BACK)
+                "HOME" -> service.executeGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_HOME)
+                "RECENTS" -> service.executeGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_RECENTS)
+                "NOTIFICATIONS" -> service.executeGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_NOTIFICATIONS)
+                "POWER" -> service.executeGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_POWER_DIALOG)
                 "ENTER" -> service.performKeyPress(66) // KEYCODE_ENTER
                 "TAB" -> service.performKeyPress(61) // KEYCODE_TAB
                 "DELETE" -> service.performKeyPress(67) // KEYCODE_DEL
@@ -506,12 +506,5 @@ class AntigravityWebSocketClient(
         onLogCallback?.invoke(msg)
     }
 
-    // Global action constants
-    companion object ActionConstants {
-        const val GLOBAL_ACTION_BACK = 1
-        const val GLOBAL_ACTION_HOME = 2
-        const val GLOBAL_ACTION_RECENTS = 3
-        const val GLOBAL_ACTION_NOTIFICATIONS = 4
-        const val GLOBAL_ACTION_POWER_DIALOG = 6
-    }
+    // Extra companion defaults were removed to prevent multiple companion object compilation errors
 }

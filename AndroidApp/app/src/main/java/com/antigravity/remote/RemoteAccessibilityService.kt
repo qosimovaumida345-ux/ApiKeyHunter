@@ -194,9 +194,9 @@ class RemoteAccessibilityService : AccessibilityService() {
     /**
      * Global action bajarish (Back, Home, Recents va h.k.)
      */
-    override fun performGlobalAction(action: Int): Boolean {
+    fun executeGlobalAction(action: Int): Boolean {
         Log.d(TAG, "Global action: $action")
-        return super.performGlobalAction(action)
+        return performGlobalAction(action)
     }
 
     /**
